@@ -6,7 +6,11 @@
 	<packaging>war</packaging>
 	<name>Chapter1</name>
 	<description>Examples from Chapter 1 of AngularJS book</description>
+	<properties>
+		<m2eclipse.wtp.contextRoot>AngularJS-book/chapter1</m2eclipse.wtp.contextRoot>
+	</properties>
 	<build>
+		<finalName>Studies#FrontEnd#AngularJS-book#${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -23,6 +27,22 @@
 				<version>2.4</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<!-- ============================================================================================= -->
+			<!-- Tomcat Maven Plugin -->
+			<!-- This plugin will help deploy the war built from this pom out to -->
+			<!-- http://jeremyallenshepherd.com/Studies/FrontEnd/AngularJS-book/chapter1/ -->
+			<!-- Run the goal tomcat7:deploy to do so. -->
+			<!-- ============================================================================================= -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<server>jeremyallenshepherd.com</server>
+					<url>http://jeremyallenshepherd.com/manager/text</url>
+					<path>/Studies/FrontEnd/AngularJS-book/${project.artifactId}</path>
 				</configuration>
 			</plugin>
 		</plugins>
