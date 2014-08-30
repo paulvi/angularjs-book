@@ -1,7 +1,7 @@
 node_modules/
 RemoteSystemsTempFiles/
 Servers/
-deployment.properties
+#deployment.properties
 
 # Created by http://www.gitignore.io
 
