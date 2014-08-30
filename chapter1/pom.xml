@@ -1,17 +1,46 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jeremyshepherd.angularjs-book</groupId>
+	<groupId>com.jeremyallenshepherd.angularjs-book</groupId>
 	<artifactId>chapter1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Chapter1</name>
+	<name>AngularJS Book Chapter1 Exercises</name>
 	<description>Examples from Chapter 1 of AngularJS book</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<m2eclipse.wtp.contextRoot>AngularJS-book/chapter1</m2eclipse.wtp.contextRoot>
 	</properties>
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://jeremyallenshepherd.com/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://jeremyallenshepherd.com/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<build>
-		<finalName>Studies#FrontEnd#AngularJS-book#${project.artifactId}</finalName>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<id>read-properties</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${project.basedir}/src/main/config/deployment.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -25,24 +54,20 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
 			</plugin>
 			<!-- ============================================================================================= -->
 			<!-- Tomcat Maven Plugin -->
-			<!-- This plugin will help deploy the war built from this pom out to -->
-			<!-- http://jeremyallenshepherd.com/Studies/FrontEnd/AngularJS-book/chapter1/ -->
-			<!-- Run the goal tomcat7:deploy to do so. -->
+			<!-- This plugin will help deploy the war built from this pom out to a Tomcat instance-->
+			<!-- Run the command mvn clean package tomcat7:deploy to do so. -->
 			<!-- ============================================================================================= -->
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<server>jeremyallenshepherd.com</server>
-					<url>http://jeremyallenshepherd.com/manager/text</url>
-					<path>/Studies/FrontEnd/AngularJS-book/${project.artifactId}</path>
+					<server>${tc.server}</server>
+					<url>${tc.url}</url>
+					<path>${tc.path}</path>
 				</configuration>
 			</plugin>
 		</plugins>
