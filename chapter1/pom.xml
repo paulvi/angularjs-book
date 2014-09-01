@@ -65,9 +65,9 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<server>${tc.server}</server>
-					<url>${tc.url}</url>
-					<path>${tc.path}</path>
+					<server>${tomcat.server}</server>
+					<url>${tomcat.url}</url>
+					<path>${tomcat.path}</path>
 				</configuration>
 			</plugin>
 		</plugins>
