@@ -1,0 +1,4 @@
+# deployment properties for Tomcat 
+tomcat.server=<enter server>
+tomcat.url=<enter url>
+tomcat.path=<enter path>
