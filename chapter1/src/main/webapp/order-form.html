@@ -1,16 +1,17 @@
 <!doctype html>
-<html ng-app="cartApp">
+<html data-ng-app="cartApp">
 <head>
+<meta charset="UTF-8">
 <title>Your Shopping Cart</title>
 </head>
-<body ng-controller="CartController">
+<body data-ng-controller="CartController">
 	<h1>Your Shopping Cart</h1>
-	<div ng-repeat="item in items">
+	<div data-ng-repeat="item in items">
 		<span>{{item.title}}</span>
-		<input ng-model="item.quantity">
+		<input data-ng-model="item.quantity">
 		<span>{{item.price | currency}}</span>
 		<span>{{item.price * item.quantity | currency}}</span>
-		<button ng-click="remove($index)">Remove</button>
+		<button data-ng-click="remove($index)">Remove</button>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>

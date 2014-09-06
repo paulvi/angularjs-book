@@ -1,12 +1,14 @@
 <!doctype html>
-<html ng-app="helloApp">
+<html data-ng-app="helloApp">
 <head>
+	<meta charset="UTF-8">
+	<title>Hello Dynamic</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
 	<script src="controllers.js"></script>
 </head>
 <body>
-	<div ng-controller="HelloController">
-		<input ng-model="greeting.text">
+	<div data-ng-controller="HelloController">
+		<input data-ng-model="greeting.text">
 		<p>{{greeting.text}}, World</p>
 	</div>
 </body>
